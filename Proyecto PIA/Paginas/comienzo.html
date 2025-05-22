@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD> 
+    <title>Comienzo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Menú blanco con letras negras */
+        .menu-superior {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+        }
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+        }
+        
+        .grupo-izquierdo, .grupo-derecho {
+            display: flex;
+            align-items: center;
+            gap: 210px;
+        }
+        
+        .logo-nav {
+            height: 50px;
+            margin: 0 20px;
+        }
+        
+        .logo-nav img {
+            height: 100%;
+            width: auto;
+            max-width: 120px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+        
+        /* ESTILO PARA "INICIO" - TEXTO MUY GRUESO */
+        .menu-superior h1 {
+            color: #333;
+            text-shadow: none;
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 900; /* Valor máximo de grosor */
+            letter-spacing: 1px; /* Opcional: separación entre letras */
+        }
+        
+        /* ESTILO DESTACADO PARA "AREA PERSONAL" */
+        .destacado {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: white !important;
+            background-color: #ACCF8B; /* Verde llamativo */
+            border: 2px solid #ACCF8B; /* Borde más oscuro */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        
+        .destacado:hover {
+            background-color: #ACCF8B; /* Verde más oscuro al pasar mouse */
+            transform: translateY(-2px); /* Efecto de levantar */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Contenido principal */
+        .contenido-principal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .titulo {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .subtitulo {
+            font-style: italic;
+            font-weight: bold;
+            color: white;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</HEAD>
+<BODY>
+  <!-- Menú blanco -->
+  <nav class="menu-superior">
+    <div class="contenedor-menu">
+      <div class="grupo-izquierdo">
+        <h1>INICIO</h1>
+        <a href="index.html" class="destacado">AREA PERSONAL</a>
+      </div>
+      
+      <div class="logo-nav">
+        <img src="../Imagenes/cefa def.png" alt="Logo">
+      </div>
+    </div>
+  </nav>
+  
+  <div class="contenido-principal">
+    <h1 class="titulo">Fortaleciendo Conocimientos</h1>
+    <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
+  </div>
+</BODY>
+</HTML>
