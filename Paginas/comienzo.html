@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<HTML>
-<HEAD> 
+<html lang="es">
+<head>
     <title>Comienzo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,6 @@
             font-family: Arial, sans-serif;
         }
         
-        /* Menú blanco con letras negras */
         .menu-superior {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 15px 0;
@@ -54,17 +53,15 @@
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
         }
         
-        /* ESTILO PARA "INICIO" - TEXTO MUY GRUESO */
         .menu-superior h1 {
             color: #333;
             text-shadow: none;
             font-size: 1.3rem;
             margin: 0;
-            font-weight: 900; /* Valor máximo de grosor */
-            letter-spacing: 1px; /* Opcional: separación entre letras */
+            font-weight: 900;
+            letter-spacing: 1px;
         }
         
-        /* ESTILO DESTACADO PARA "AREA PERSONAL" */
         .destacado {
             text-decoration: none;
             font-size: 1rem;
@@ -74,19 +71,18 @@
             transition: all 0.3s;
             white-space: nowrap;
             color: white !important;
-            background-color: #ACCF8B; /* Verde llamativo */
-            border: 2px solid #ACCF8B; /* Borde más oscuro */
+            background-color: #ACCF8B;
+            border: 2px solid #ACCF8B;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             display: inline-block;
         }
         
         .destacado:hover {
-            background-color: #ACCF8B; /* Verde más oscuro al pasar mouse */
-            transform: translateY(-2px); /* Efecto de levantar */
+            background-color: #ACCF8B;
+            transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
-        /* Contenido principal */
         .contenido-principal {
             position: absolute;
             top: 50%;
@@ -111,26 +107,113 @@
             font-size: 1.3rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
+
+        /* Área de usuario */
+        .usuario-info {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #333;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+
+        /* Mensaje de error */
+        .error-message {
+            color: white;
+            background-color: rgba(220, 53, 69, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
     </style>
-</HEAD>
-<BODY>
-  <!-- Menú blanco -->
+</head>
+<body>
+    <script>
+        // Verificar si el usuario ha iniciado sesión
+        if (!sessionStorage.getItem('usuarioAutenticado')) {
+            alert('Debes iniciar sesión para acceder');
+            window.location.href = 'Index.html';
+        }
+    </script>
+
+  <!-- Menú superior -->
   <nav class="menu-superior">
     <div class="contenedor-menu">
       <div class="grupo-izquierdo">
         <h1>INICIO</h1>
-        <a href="index.html" class="destacado">AREA PERSONAL</a>
+        <a href="Estudiantes.html" class="destacado">AREA PERSONAL</a>
       </div>
       
       <div class="logo-nav">
         <img src="../Imagenes/cefa def.png" alt="Logo">
       </div>
     </div>
+
+    <!-- Área de usuario -->
+    <div class="usuario-info" id="usuarioInfo">
+        <span id="nombreUsuario"></span>
+        <button class="btn-logout" id="btnLogout">
+            <i class="fas fa-sign-out-alt"></i> Salir
+        </button>
+    </div>
   </nav>
   
   <div class="contenido-principal">
     <h1 class="titulo">Fortaleciendo Conocimientos</h1>
     <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
+    <div class="error-message" id="errorMessage"></div>
   </div>
-</BODY>
-</HTML>
+
+  <script>
+    // Verificar sesión al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        const usuario = sessionStorage.getItem("usuarioAutenticado");
+        const errorMessage = document.getElementById("errorMessage");
+        
+        if (!usuario) {
+            errorMessage.textContent = "Error: No hay sesión activa. Serás redirigido a nuestra pagina inicial";
+            errorMessage.style.display = "block";
+            
+            // Redirigir después de 3 segundos
+            setTimeout(function() {
+                window.location.href = "Index.html";
+            }, 5000);
+        } else {
+            // Mostrar nombre de usuario
+            document.getElementById("nombreUsuario").textContent = `Bienvenido, ${usuario}`;
+        }
+
+        // Configurar botón de logout
+        document.getElementById("btnLogout").addEventListener("click", function() {
+            sessionStorage.removeItem("usuarioAutenticado");
+            window.location.href = "Index.html";
+        });
+    });
+
+    // Depuración: Mostrar contenido de sessionStorage en consola
+    console.log("Contenido de sessionStorage:", sessionStorage);
+    console.log("Usuario autenticado:", sessionStorage.getItem("usuarioAutenticado"));
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Docente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cbf4c1; /* Color de fondo verde claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+         body::before {
+            content: "";
+            background-image: url('../Imagenes/instc\ 2025-07-10\ 165512.882.jpeg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            
+        }
+
+       
+        .top-right-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .small-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ACCF8B;
+            display: block; 
+            margin: 0 auto;
+        }
+        
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .logo-frame {
+            background-color: #ACCF8B;
+            border-radius: 60px;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .logo-img-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo-img {
+            max-width: 300px;
+            max-height: 200px;
+            height: auto;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .control-group {
+            text-align: center;
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        select {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 16px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            appearance: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Script de verificación de sesión (agregado al inicio) -->
+    <script>
+        // Verificar si el usuario ha iniciado sesión
+        if (!sessionStorage.getItem('usuarioAutenticado')) {
+            alert('Debes iniciar sesión para acceder');
+            window.location.href = 'Index.html';
+        }
+    </script>
+
+    <!-- Contenedor superior derecho -->
+    <div class="top-right-container">   
+        <img src="../Imagenes/carbonero.png" alt="Usuario" class="small-img">
+        <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <!-- Logo principal -->
+    <div class="logo-container">
+        <div class="logo-frame">
+            <div class="logo-img-container">
+                <img src="../Imagenes/fc-removebg-preview.png" alt="Logo" class="logo-img">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Controles de grado y semestre -->
+    <div class="controls">
+        <div class="control-group">
+            <label for="grado">GRADO</label>
+            <select id="grado">
+                <option value="0">SELECCIONAR</option>
+                <option value="informatica">11°INFORMATICA1</option>
+                <option value="quimicas">11°CIENCIAS QUIMICAS 2</option>
+                <option value="artes">11°ARTES ESCENICAS</option>
+                <option value="matematicas">11°MATEMATICAS</option>
+                <option value="ingles">11°INGLES</option>
+                <option value="diseno">11°DISEÑO Y PATRONAJE</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="semestre">SEMESTRE</label>
+            <select id="semestre">
+                <option value="0">SELECCIONAR</option>
+                <option value="1">SEMESTRE 1</option>
+                <option value="2">SEMESTRE 2</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Scripts (modificados) -->
+    <script>
+        // Función para cerrar sesión
+        function cerrarSesion() { 
+            sessionStorage.removeItem('usuarioAutenticado');
+            sessionStorage.removeItem('tipoUsuario');
+            window.location.href = "Index.html"; 
+        }
+
+        // Verificación de permisos
+        if (sessionStorage.getItem("tipoUsuario") !== "admin") {
+            window.alert('No tienes acceso');
+            window.location.href = 'Index.html';
+        }
+
+        
+    </script>
+</body>
+</html>
