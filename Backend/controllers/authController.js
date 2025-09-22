@@ -3,17 +3,17 @@ const jwt = require('jsonwebtoken');
 const pool = require('../db/pool');
 
 exports.register = async (req, res) => {
-  const { name, email, password, is_admin = false } = req.body;
+  const { name,  password, is_admin = false } = req.body;
 
-  if (!email || !password || !name) {
+  if (  !password || !name) {
     return res.status(400).json({ error: 'Faltan campos' });
   }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const result = await pool.query(
-      'INSERT INTO users (name, email, password, is_admin) VALUES ($1, $2, $3, $4) RETURNING id, name, email, is_admin',
-      [name, email, hashedPassword, is_admin]
+      'INSERT INTO users (name,  password, is_admin) VALUES ($1, $2, $3,) RETURNING id, name,  is_admin',
+      [name,  hashedPassword, is_admin]
     );
 
     res.status(201).json(result.rows[0]);
@@ -24,22 +24,26 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { usuario, password } = req.body;
+  const { usuario, contrasena } = req.body;
+            console.log(await pool.query(
+            "SELECT * FROM usuarios",
+        ));
   try {
-    const result = await pool.query('SELECT * FROM users WHERE email = $1', [usuario]);
+    const result = await pool.query('SELECT * FROM usuarios WHERE name = $1', [usuario]);
     if (result.rows.length === 0) return res.status(400).json({ error: 'Usuario no encontrado' });
 
     const user = result.rows[0];
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(contrasena, user.password);
     if (!match) return res.status(401).json({ error: 'Contraseña incorrecta' });
 
     const token = jwt.sign(
-      { id: user.id, is_admin: user.user_role },
+      { id: user.id, is_admin: user.is_admin },
       process.env.JWT_SECRET,
       { expiresIn: '2h' }
     );
 
     res.json({
+      success:
       token,
       user: { id: user.id, name: user.name, is_role: user.user_role, is_contrasena: user.password },
     });

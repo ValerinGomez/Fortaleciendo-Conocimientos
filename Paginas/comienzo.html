@@ -149,19 +149,13 @@
     </style>
 </head>
 <body>
-    <script>
-        // Verificar si el usuario ha iniciado sesión
-        if (!sessionStorage.getItem('usuarioAutenticado')) {
-            alert('Debes iniciar sesión para acceder');
-            window.location.href = 'Index.html';
-        }
-    </script>
+   
 
   <!-- Menú superior -->
   <nav class="menu-superior">
     <div class="contenedor-menu">
       <div class="grupo-izquierdo">
-        <h1>INICIO</h1>
+        
         <a href="Estudiantes.html" class="destacado">AREA PERSONAL</a>
       </div>
       
@@ -191,24 +185,12 @@
         const usuario = sessionStorage.getItem("usuarioAutenticado");
         const errorMessage = document.getElementById("errorMessage");
         
-        if (!usuario) {
-            errorMessage.textContent = "Error: No hay sesión activa. Serás redirigido a nuestra pagina inicial";
-            errorMessage.style.display = "block";
-            
-            // Redirigir después de 3 segundos
-            setTimeout(function() {
-                window.location.href = "Index.html";
-            }, 5000);
-        } else {
-            // Mostrar nombre de usuario
-            document.getElementById("nombreUsuario").textContent = `Bienvenido, ${usuario}`;
-        }
-
-        // Configurar botón de logout
-        document.getElementById("btnLogout").addEventListener("click", function() {
+       document.getElementById("btnLogout").addEventListener("click", function() {
             sessionStorage.removeItem("usuarioAutenticado");
             window.location.href = "Index.html";
         });
+
+     
     });
 
     // Depuración: Mostrar contenido de sessionStorage en consola

@@ -7,13 +7,13 @@ const createTables = async (req, res) => {
 
 
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE usuarios;
+
 
 CREATE TABLE IF NOT EXISTS usuarios (
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
 password TEXT NOT NULL,
-role VARCHAR(20) NOT NULL CHECK (role IN ('estudiante', 'docente', 'administrador'))
+user_role VARCHAR(20) NOT NULL CHECK (user_role IN ('estudiante', 'docente', 'administrador'))
 );
 
 CREATE TABLE IF NOT EXISTS users (
@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS users (
     password TEXT NOT NULL,
     user_role VARCHAR(20) NOT NULL CHECK (user_role IN ('estudiante', 'docente', 'administrador'))
 );
+
 
 
 

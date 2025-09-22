@@ -134,14 +134,7 @@
     </style>
 </head>
 <body>
-    <!-- Script de verificación de sesión (agregado al inicio) -->
-    <script>
-        // Verificar si el usuario ha iniciado sesión
-        if (!sessionStorage.getItem('usuarioAutenticado')) {
-            alert('Debes iniciar sesión para acceder');
-            window.location.href = 'Index.html';
-        }
-    </script>
+    
 
     <!-- Contenedor superior derecho -->
     <div class="top-right-container">   
@@ -192,11 +185,7 @@
             window.location.href = "Index.html"; 
         }
 
-        // Verificación de permisos
-        if (sessionStorage.getItem("tipoUsuario") !== "admin") {
-            window.alert('No tienes acceso');
-            window.location.href = 'Index.html';
-        }
+       
 
         
     </script>

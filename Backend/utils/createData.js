@@ -77,9 +77,6 @@ const pool = require('../db/pool'); // Asegúrate que esta ruta es correcta
 const bcrypt = require('bcrypt');
 const createData = async (req, res) => {
   console.log(await pool.query(
-            "SELECT * FROM users",
-        ));
-  console.log(await pool.query(
             "SELECT * FROM usuarios",
         ));
   
@@ -89,11 +86,11 @@ const createData = async (req, res) => {
         const hashedPassword = await bcrypt.hash('123', 10);
         // Insertar datos en la tabla usuarios
         await pool.query(
-            "INSERT INTO users (name, password, user_role) VALUES ($1, $2, $3)",
-            ['asd', hashedPassword, 'administrador']
+            "INSERT INTO usuarios (name, password, user_role) VALUES ($1, $2, $3)",
+            ['doc', hashedPassword, 'docente']
         );
           console.log(await pool.query(
-            "SELECT * FROM users",
+            "SELECT * FROM usuarios",
         ));
         res.send('☑ Data creada correctamente');
     } catch (error) {
@@ -102,3 +99,31 @@ const createData = async (req, res) => {
     }
 };
 module.exports = createData;
+
+
+// const pool = require('../db/pool'); // Asegúrate que esta ruta es correcta
+// const bcrypt = require('bcrypt');
+// const createData = async (req, res) => {
+//   console.log(await pool.query(
+//             "SELECT * FROM docentes",
+//         ));
+  
+   
+//     try {
+//         // Hashear la contraseña (puedes cambiar '123' por la contraseña real)
+//        const hashedPassword = await bcrypt.hash('1234', 10);
+//         // Insertar datos en la tabla usuarios
+//         await pool.query(
+//            "INSERT INTO docentes (name, password,) VALUES ($1, $2,)",
+//             ['qwe', hashedPassword, 'docente']
+//         );
+//           console.log(await pool.query(
+//             "SELECT * FROM docentes",
+//         ));
+//         res.send('☑ Data creada correctamente');
+//     } catch (error) {
+//        console.error('✗ Error al crear los datos:', error.message);
+//         res.status(500).send('✗ Error al crear los datos: ' + error.message);
+//     }
+// };
+// module.exports = createData;
