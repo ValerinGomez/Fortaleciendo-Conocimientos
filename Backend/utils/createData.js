@@ -73,7 +73,7 @@
 
 // module.exports = insertData;
 
-const pool = require('../db/pool'); // Asegúrate que esta ruta es correcta
+const pool = require('../db/pool'); 
 const bcrypt = require('bcrypt');
 const createData = async (req, res) => {
   console.log(await pool.query(
@@ -83,11 +83,11 @@ const createData = async (req, res) => {
    
     try {
         // Hashear la contraseña (puedes cambiar '123' por la contraseña real)
-        const hashedPassword = await bcrypt.hash('123', 10);
+        const hashedPassword = await bcrypt.hash('784512', 10);
         // Insertar datos en la tabla usuarios
         await pool.query(
             "INSERT INTO usuarios (name, password, user_role) VALUES ($1, $2, $3)",
-            ['doc', hashedPassword, 'docente']
+            ['Carlos Ruiz', hashedPassword, 'docente']
         );
           console.log(await pool.query(
             "SELECT * FROM usuarios",
@@ -102,28 +102,35 @@ module.exports = createData;
 
 
 // const pool = require('../db/pool'); // Asegúrate que esta ruta es correcta
-// const bcrypt = require('bcrypt');
+
 // const createData = async (req, res) => {
-//   console.log(await pool.query(
-//             "SELECT * FROM docentes",
-//         ));
-  
-   
-//     try {
-//         // Hashear la contraseña (puedes cambiar '123' por la contraseña real)
-//        const hashedPassword = await bcrypt.hash('1234', 10);
-//         // Insertar datos en la tabla usuarios
-//         await pool.query(
-//            "INSERT INTO docentes (name, password,) VALUES ($1, $2,)",
-//             ['qwe', hashedPassword, 'docente']
-//         );
-//           console.log(await pool.query(
-//             "SELECT * FROM docentes",
-//         ));
-//         res.send('☑ Data creada correctamente');
-//     } catch (error) {
-//        console.error('✗ Error al crear los datos:', error.message);
-//         res.status(500).send('✗ Error al crear los datos: ' + error.message);
-//     }
+//   try {
+//     // Mostrar el contenido actual de la tabla
+//     const datosPrevios = await pool.query("SELECT * FROM grados_semestre");
+//     console.log('Antes de insertar:', datosPrevios.rows);
+
+//     // Datos estáticos por ahora (puedes cambiarlos o extraerlos de req.body)
+//     const grado = 'GRADO 6°';
+//     const semestre = 'SEMESTRE 1';
+//     const materias = 'QUÍMICA';
+//     const URL = 'https://example.com/materias.pdf';
+
+//     // Insertar los datos
+//     const insert = await pool.query(
+//       "INSERT INTO grados_semestre (grado, semestre, materias, url_archivo) VALUES ($1, $2, $3, $4) RETURNING *",
+//       [grado, semestre, materias, URL]
+//     );
+
+//     // Mostrar el contenido actualizado de la tabla
+//     const datosNuevos = await pool.query("SELECT * FROM grados_semestre");
+//     console.log('Después de insertar:', datosNuevos.rows);
+
+//     // Confirmar
+//     res.send('☑ Data creada correctamente');
+//   } catch (error) {
+//     console.error('✗ Error al crear los datos:', error.message);
+//     res.status(500).send('✗ Error al crear los datos: ' + error.message);
+//   }
 // };
+
 // module.exports = createData;

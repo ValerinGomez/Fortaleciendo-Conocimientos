@@ -162,47 +162,44 @@
 
             // Si es válido, verificar si es admin
             if (isValid) {
-                // Credenciales de administrador (en producción esto vendría de una API)
-
-                try {
-                    const res = await fetch("http://localhost:3000/auth/login", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ usuario, contrasena })
-                    });
-
-                    const data = await res.json();
-                    console.log(data);
-                    document.getElementById("adminError").innerText = data.message;
-
-                    if (data.success) {
-                        
-                        document.getElementById("adminError").style.color = "green";
-                        if (data && data.user.is_role === "administrador") {
-                            
-                            window.location.href = "Administracion.html";
-                            sessionStorage.setItem('tipoUsuario', data.user.is_role);
-                        } else if (data.user.is_role === "estudiante") {
-                            window.location.href = "comienzo.html";
-                            sessionStorage.setItem("tipoUsuario", data.user_role);
-                        } else {
-                            window.location.href = "DocenteIngreso.html";
-                            sessionStorage.setItem("tipoUsuario", data.user_role);
-
-                        }
-                    } else {
-                        document.getElementById("adminError").style.color = "red";
-                    }
-                } catch (error) {
-                    document.getElementById("adminError").innerText = "Error de conexión con el servidor.";
-                    document.getElementById("adminError").style.color = "red";
-                }
-
-
-            }
+      try {
+        const res = await fetch("http://localhost:3000/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ usuario, contrasena })
         });
 
-    </script>
+        const data = await res.json();
+        console.log(data);
+        adminError.innerText = data.message;
+
+        if (data.success) {
+          adminError.style.color = "green";
+
+          const role = data.user.role; // <- esta es la propiedad correcta
+          sessionStorage.setItem("tipoUsuario", role);
+
+          if (role === "administrador") {
+            window.location.href = "Administracion.html";
+          } else if (role === "estudiante") {
+            window.location.href = "comienzo.html";
+          } else if (role === "docente") {
+            window.location.href = "DocenteIngreso.html";
+          } else {
+            adminError.innerText = "Rol desconocido.";
+            adminError.style.color = "red";
+          }
+
+        } else {
+          adminError.style.color = "red";
+        }
+      } catch (error) {
+        adminError.innerText = "Error de conexión con el servidor.";
+        adminError.style.color = "red";
+      }
+    }
+  });
+</script>
 </body>
 
 </html>

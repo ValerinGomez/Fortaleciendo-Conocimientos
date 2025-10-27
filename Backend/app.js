@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
+const guiasRoutes = require('./routes/guiasRoutes');
+const guiasEstudiantesRoutes = require('./routes/guiasEstudiantesRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const createData = require('./utils/createData');
 const pool = require('./db/pool');
 const createTables = require('./utils/createTables');
@@ -15,6 +18,10 @@ app.use(express.json());
 // Rutas principales
 app.use('/auth', authRoutes);
 app.use('/reviews', reviewRoutes);
+app.use('/guias' , guiasRoutes);
+app.use('/guias_estudiantes', guiasEstudiantesRoutes);
+app.use('/admin', adminRoutes);
+
 
 // Ruta para crear las tablas (solo en desarrollo)
 app.get('/create-data', createData);

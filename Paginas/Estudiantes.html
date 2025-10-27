@@ -1,266 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guías Académicas</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #DFEED1;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-        }
-        
-        .left-panel {
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Estudiantes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #cbf4c1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
 
-        
-        
-        .logo-container img {
-            width: 305px;
-            height: 295px;
-            object-fit: contain;
-            border-radius: 25%;
-            border: 5px solid #567836; /* Margen verde inicial */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            padding: 5px; /* Espacio entre el margen y la imagen */
-            background-color: white;
-        }
-        
-        .docentes-btn {
-            width: 200px;
-            height: 50px;
-            background-color: #5C7545;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .docentes-btn:hover {
-            background-color: #5C7545;
-        }
-        
-        .right-panel {
-            width: 70%;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            align-content: start;
-        }
-        
-        .materia {
-            background-color: #5C7545;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .materia:hover {
-            transform: scale(1.03);
-        }
-        
-        .materia h2 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .materia p {
-            margin: 5px 0 0;
-            font-size: 0.9rem;
-        }
-        
-        .btn-guia {
-            background-color: #ACCF8B;
-            color: white;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 8px;
-            transition: background-color 0.3s;
-        }
-        
-        .btn-guia:hover {
-            background-color: #375619;
-        }
-        
-        /* Eliminar barra de desplazamiento */
-        .right-panel::-webkit-scrollbar {
-            display: none;
-        }
-        
-        @media (max-width: 1024px) {
-            .right-panel {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                height: auto;
-                overflow: auto;
-            }
-            .left-panel, .right-panel {
-                width: 100%;
-            }
-            .right-panel {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .right-panel {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    body::before {
+      content: "";
+      background-image: url('../Imagenes/carbonero.png'); 
+      background-size: cover; 
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      position: fixed; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .top-right-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .logout-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover { background-color: #d32f2f; }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-frame {
+      background-color: #ACCF8B;
+      border-radius: 60px;
+      padding: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .logo-img-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 30px;
+    }
+
+    .logo-img { max-width: 300px; }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .control-group { flex: 1; text-align: center; }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    select {
+      padding: 12px 20px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      width: 100%;
+      font-size: 16px;
+      background-color: white;
+      text-align: center;
+    }
+
+    /* Cuadro dinámico */
+    #resultado {
+      margin-top: 30px;
+      background: rgba(0,128,0,0.2);
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      display: none;
+    }
+
+    #resultado table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #resultado th, #resultado td {
+      padding: 10px;
+      border: 1px solid #4CAF50;
+      text-align: center;
+    }
+
+    #resultado th {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .botones {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .botones button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .subir { background-color: #28a745; }
+    .borrar { background-color: #f44336; }
+  </style>
 </head>
 <body>
-    <!-- Panel izquierdo con imagen y botón -->
-    <div class="left-panel">
-        <div class="logo-container">
-            <img src="../Imagenes/fc-removebg-preview.png"  alt="Logo académico">
-        </div>
-        <button class="docentes-btn">Estudiantes</button>
+  <!-- Contenedor superior derecho -->
+  <div class="top-right-container">   
+    <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <div class="logo-frame">
+      <div class="logo-img-container">
+        <img src="../Imagenes/fc-removebg-preview.png" alt="Logo" class="logo-img">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Controles -->
+  <div class="controls">
+    <div class="control-group">
+      <label for="grado">GRADO</label>
+      <select id="grado">
+        <option value="0">SELECCIONAR</option>
+        <option value="Grado 6">GRADO 6°</option>
+        <option value="Grado 7">GRADO 7°</option>
+        <option value="Grado 8">GRADO 8°</option>
+        <option value="Grado 9">GRADO 9°</option>
+        <option value="Grado 10">GRADO 10°</option>
+        <option value="Grado 11">GRADO 11°</option>
+      </select>
     </div>
     
-    <!-- Panel derecho con cuadros de materias -->
-    <div class="right-panel">
-        <div class="materia">
-            <h2>CÁLCULO</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>INGLÉS</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>FÍSICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>FILOSOFÍA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>ESTADÍSTICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>BIOLOGÍA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>CIENCIAS SOCIALES</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>INFORMÁTICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>EDUCACIÓN RELIGIOSA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>EDUCACIÓN ARTÍSTICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>EDUCACIÓN FÍSICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>QUÍMICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>ECONOMÍA Y POLÍTICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>ÉTICA Y VALORES</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>LENGUA CASTELLANA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>ARITMETICA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>ALGEBRA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>TRIGONOMETRIA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>GEOMETRIA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
-        <div class="materia">
-            <h2>COMPETENCIA LECTORA</h2>
-            <p>Guías de refuerzo y mejora</p>
-            <a href="Alumno.html" class="btn-guia">Guías</a>
-        </div>
+    <div class="control-group">
+      <label for="semestre">SEMESTRE</label>
+      <select id="semestre">
+        <option value="0">SELECCIONAR</option>
+        <option value="1">SEMESTRE 1</option>
+        <option value="2">SEMESTRE 2</option>
+      </select>
     </div>
+
+    <div class="control-group">
+      <label for="materia">MATERIA</label>
+      <select id="materia">
+        <option value="0">SELECCIONAR</option>
+        <option value="quimica">QUÍMICA</option>
+        <option value="biologia">BIOLOGÍA</option>
+        <option value="fisica">FÍSICA</option>
+        <option value="calculo">CALCULO</option>
+        <option value="ingles">INGLES</option>
+        <option value="filosofia">FILOSOFIA</option>
+        <option value="estadistica">ESTADISTICA</option>
+        <option value="ciencias sociales">CIENCIAS SOCIALES</option>
+        <option value="informatica">INFORMATICA</option>
+        <option value="educacion religiosa">EDUCACION RELIGIOSA</option>
+        <option value="educacion artistica">EDUCACION ARTISTICA</option>
+        <option value="educacion fisica">EDUCACION FISICA</option>
+        <option value="economia y politica">ECONOMIA Y POLITICA</option>
+        <option value="etica y valores">ETICA Y VALORES</option>
+        <option value="lengua castellana">LENGUA CASTELLANA</option>
+        <option value="aritmetica">ARITMETICA</option>
+        <option value="algebra">ALGEBRA</option>
+        <option value="trigonometria">TRIGONOMETRIA</option>
+        <option value="geometria">GEOMETRIA</option>
+        <option value="competencia lectora">COMPETENCIA LECTORA</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="resultado" style="margin-top: 40px; background-color: rgba(0, 128, 0, 0.2); padding: 20px; border-radius: 15px; width: 80%; max-width: 800px; border: 2px solid #4CAF50;">
+  <h2 style="text-align: center;">📘 Guías disponibles</h2>
+  <table id="tablaGuias" style="width:100%; border-collapse: collapse;">
+    <thead>
+      <tr style="background-color: #4CAF50; color: white;">
+        <th>ID</th>
+        <th>Grado</th>
+        <th>Semestre</th>
+        <th>Materia</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Archivo</th>
+      </tr>
+    </thead>
+    <tbody id="tbodyGuias">
+      <tr><td colspan="7" style="text-align:center; padding:10px;">Selecciona un grado, semestre y materia para ver las guías.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <script>
+  const gradoSelect = document.getElementById('grado');
+  const semestreSelect = document.getElementById('semestre');
+  const materiaSelect = document.getElementById('materia');
+  const resultadoDiv = document.getElementById('resultado');
+  const tablaGuias = document.getElementById('tablaGuias');
+
+  async function obtenerGuias() {
+    const grado = gradoSelect.value;
+    const semestre = semestreSelect.value;
+    const materia = materiaSelect.value;
+
+    if (grado === "0" || semestre === "0" || materia === "0") {
+      resultadoDiv.style.display = "none";
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/guias_estudiantes?grado=${grado}&semestre=${semestre}&materia=${materia}`);
+      const guias = await res.json();
+
+      resultadoDiv.style.display = "block";
+      tablaGuias.innerHTML = ""; // limpiar
+
+      if (guias.length === 0) {
+        tablaGuias.innerHTML = `
+          <tr><td colspan="6">No hay guías disponibles para esta materia.</td></tr>
+        `;
+        return;
+      }
+
+      guias.forEach((g) => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${g.id}</td>
+          <td>${g.grado}</td>
+          <td>${g.semestre}</td>
+          <td>${g.materia}</td>
+          <td><a href="http://localhost:3000${g.url_archivo}" target="_blank">Ver guía</a></td>
+        `;
+        tablaGuias.appendChild(fila);
+      });
+
+    } catch (error) {
+      console.error("Error al cargar guías:", error);
+      tablaGuias.innerHTML = `<tr><td colspan="6">Error al cargar guías.</td></tr>`;
+    }
+  }
+
+  // Cuando el estudiante cambie algo, se actualiza automáticamente
+  gradoSelect.addEventListener('change', obtenerGuias);
+  semestreSelect.addEventListener('change', obtenerGuias);
+  materiaSelect.addEventListener('change', obtenerGuias);
+</script>
+
+
+
 </body>
 </html>
               

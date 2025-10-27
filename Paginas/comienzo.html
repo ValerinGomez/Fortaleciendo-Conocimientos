@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Comienzo</title>
+    <title>Fortalociendo Conocimientos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             margin: 0;
@@ -29,21 +30,15 @@
         
         .contenedor-menu {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            width: 90%;
-            max-width: 1000px;
-        }
-        
-        .grupo-izquierdo, .grupo-derecho {
-            display: flex;
-            align-items: center;
-            gap: 210px;
+            width: 100%;
+            max-width: 800px;
+            gap: 250px;
         }
         
         .logo-nav {
             height: 50px;
-            margin: 0 20px;
         }
         
         .logo-nav img {
@@ -51,15 +46,6 @@
             width: auto;
             max-width: 120px;
             filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
-        }
-        
-        .menu-superior h1 {
-            color: #333;
-            text-shadow: none;
-            font-size: 1.3rem;
-            margin: 0;
-            font-weight: 900;
-            letter-spacing: 1px;
         }
         
         .destacado {
@@ -110,9 +96,6 @@
 
         /* Área de usuario */
         .usuario-info {
-            position: absolute;
-            top: 15px;
-            right: 20px;
             color: #333;
             font-weight: bold;
             display: flex;
@@ -127,14 +110,20 @@
             background-color: #dc3545;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 15px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .btn-logout:hover {
             background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* Mensaje de error */
@@ -146,56 +135,59 @@
             margin-top: 20px;
             display: none;
         }
+
+        /* Elementos del menú superior */
+        .menu-izquierdo, .menu-derecho {
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
    
-
-  <!-- Menú superior -->
-  <nav class="menu-superior">
-    <div class="contenedor-menu">
-      <div class="grupo-izquierdo">
-        
-        <a href="Estudiantes.html" class="destacado">AREA PERSONAL</a>
-      </div>
-      
-      <div class="logo-nav">
-        <img src="../Imagenes/cefa def.png" alt="Logo">
-      </div>
-    </div>
-
-    <!-- Área de usuario -->
-    <div class="usuario-info" id="usuarioInfo">
-        <span id="nombreUsuario"></span>
-        <button class="btn-logout" id="btnLogout">
-            <i class="fas fa-sign-out-alt"></i> Salir
-        </button>
-    </div>
-  </nav>
+    <!-- Menú superior -->
+    <nav class="menu-superior">
+        <div class="contenedor-menu">
+            <div class="menu-izquierdo">
+                <a href="Estudiantes.html" class="destacado">AREA PERSONAL</a>
+            </div>
+            
+            <div class="logo-nav">
+                <img src="../Imagenes/cefa def.png" alt="Logo">
+            </div>
+            
+            <div class="menu-derecho">
+                <div class="usuario-info" id="usuarioInfo">
+                    <span id="nombreUsuario"></span>
+                    <button class="btn-logout" id="btnLogout">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
   
-  <div class="contenido-principal">
-    <h1 class="titulo">Fortaleciendo Conocimientos</h1>
-    <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
-    <div class="error-message" id="errorMessage"></div>
-  </div>
+    <div class="contenido-principal">
+        <h1 class="titulo">Fortalociendo Conocimientos</h1>
+        <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
+        <div class="error-message" id="errorMessage"></div>
+    </div>
 
-  <script>
-    // Verificar sesión al cargar la página
-    document.addEventListener('DOMContentLoaded', function() {
-        const usuario = sessionStorage.getItem("usuarioAutenticado");
-        const errorMessage = document.getElementById("errorMessage");
-        
-       document.getElementById("btnLogout").addEventListener("click", function() {
-            sessionStorage.removeItem("usuarioAutenticado");
-            window.location.href = "Index.html";
+    <script>
+        // Verificar sesión al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const usuario = sessionStorage.getItem("usuarioAutenticado");
+            const errorMessage = document.getElementById("errorMessage");
+            
+            document.getElementById("btnLogout").addEventListener("click", function() {
+                sessionStorage.removeItem("usuarioAutenticado");
+                window.location.href = "Index.html";
+            });
         });
 
-     
-    });
-
-    // Depuración: Mostrar contenido de sessionStorage en consola
-    console.log("Contenido de sessionStorage:", sessionStorage);
-    console.log("Usuario autenticado:", sessionStorage.getItem("usuarioAutenticado"));
-  </script>
+        // Depuración: Mostrar contenido de sessionStorage en consola
+        console.log("Contenido de sessionStorage:", sessionStorage);
+        console.log("Usuario autenticado:", sessionStorage.getItem("usuarioAutenticado"));
+    </script>
 </body>
 </html>

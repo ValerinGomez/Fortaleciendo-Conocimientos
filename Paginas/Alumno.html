@@ -135,9 +135,9 @@
 </head>
 <body>
     <div class="header">
-        <button class="save-btn">GUARDAR</button>
         <div class="admin-title">ESTUDIANTE</div>
-        <button class="exit-btn">SALIR</button>
+      <button class="exit-btn" id="exit-btn">SALIR</button>
+
     </div>
     
     <div class="main-content">
@@ -172,12 +172,11 @@
             guidesContainer.style.backgroundColor = this.value;
         });
         
-        // Función para el botón SALIR
-        document.querySelector('.exit-btn').addEventListener('click', function() {
-            if(confirm('¿Está seguro que desea salir?')) {
-                window.location.href = "index.html";
-            }
-        });
+        
+                  document.querySelector(".exit-btn").addEventListener("click", function() {
+                        window.location.href = "Index.html";
+});
+
     </script>
 </body>
 </html>
