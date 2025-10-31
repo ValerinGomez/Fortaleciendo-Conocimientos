@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD> 
+    <title>Principio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        
+        .menu-superior {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 20px 0; 
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            height: 60px;
+        }
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%; 
+            max-width: 1000px; 
+        }
+        
+        .grupo-izquierdo, .grupo-derecho {
+            display: flex;
+            align-items: center;
+            gap: 100px; 
+        }
+        
+        .logo-nav {
+            height: 50px;
+            margin: 0 20px;
+        }
+        
+        .logo-nav img {
+            height: 100%;
+            width: auto;
+            max-width: 120px;
+        }
+        
+        .menu-superior h1 {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .menu-superior a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .menu-superior a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        
+        .contenido-principal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .titulo {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .subtitulo {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</HEAD>
+<BODY>
+ 
+  <nav class="menu-superior">
+    <div class="contenedor-menu">
+      
+      <div class="grupo-izquierdo">
+        <h1>INICIO</h1>
+        <a href="#">AREA PERSONAL</a>
+      </div>
+      
+      
+      <div class="logo-nav">
+        <img src="../Imagenes/bgh__2_-removebg-preview.png" alt="Logo">
+      </div>
+      
+     
+      <div class="grupo-derecho">
+        <a href="index.html">GRUPOS</a>
+        <a href="Ingreso.html">REGISTRARSE <i class="fas fa-user"></i></a>
+      </div>
+    </div>
+  </nav>
+  
+ 
+  <div class="contenido-principal">
+    <h1 class="titulo">Fortaleciendo Conocimientos</h1>
+    <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
+  </div>
+</BODY>
+</HTML>

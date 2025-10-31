@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proyecto Fortaleciendo Conocimientos - PIA 2024</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos base */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Menú superior */
+        .menu-superior {
+            background-color: rgba(255, 255, 255, 0.97);
+            padding: 15px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+        }
+        
+        .grupo-izquierdo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .grupo-izquierdo h1 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .logo-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .logo-nav img {
+            height: 50px;
+            filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+        }
+        
+        /* Contenido principal */
+        .contenido-principal {
+            padding: 140px 20px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .titulo-principal {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitulo {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            font-style: italic;
+        }
+        
+        /* Secciones de contenido */
+        .secciones {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .seccion {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .seccion:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+        
+        .seccion h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .seccion h3 {
+            color: #2980b9;
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .seccion p, .seccion ul {
+            color: #444;
+            font-size: 1.05rem;
+        }
+        
+        .seccion ul {
+            padding-left: 22px;
+        }
+        
+        .seccion li {
+            margin-bottom: 8px;
+        }
+        
+        .destacado {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        
+        /* Nuevo pie de página */
+        .pie-pagina {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contenedor-pie {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .redes-sociales {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        
+        .social-icon {
+            color: #333;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: #3498db;
+            transform: scale(1.1);
+        }
+        
+        .info-colegio {
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .info-colegio h2 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .info-colegio p {
+            color: #555;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        .creadoras {
+            text-align: right;
+        }
+        
+        .creadoras h3 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .creadoras p {
+            color: #555;
+            font-size: 0.9rem;
+            margin: 3px 0;
+        }
+        
+        .logo-pie {
+            margin-top: 20px;
+        }
+        
+        .logo-pie img {
+            height: 60px;
+            filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contenedor-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .logo-nav {
+                position: static;
+                transform: none;
+                order: 2;
+            }
+            
+            .contenido-principal {
+                padding: 120px 15px 40px;
+            }
+            
+            .titulo-principal {
+                font-size: 2rem;
+            }
+            
+            .subtitulo {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .seccion {
+                min-width: 100%;
+                padding: 20px;
+            }
+            
+            .contenedor-pie {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .redes-sociales {
+                flex-direction: row;
+                justify-content: center;
+                order: 3;
+                margin-top: 20px;
+            }
+            
+            .creadoras {
+                text-align: center;
+                order: 2;
+            }
+            
+            .info-colegio {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú superior -->
+    <nav class="menu-superior">
+        <div class="contenedor-menu">
+            <div class="grupo-izquierdo">
+                <h1>INICIO</h1>
+            </div>
+            
+            <div class="logo-nav">
+                <img src="../Imagenes/cefa def.png" alt="Logo CEFA">
+            </div>
+            
+            <div style="flex: 1; text-align: right;">
+                <a href="Ingreso.html" style="color: #333; text-decoration: none;font-weight:500";>
+                    REGISTRARSE <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <div class="contenido-principal">
+        <h1 class="titulo-principal">FORTALECIENDO CONOCIMIENTOS</h1>
+        <p class="subtitulo">Estrategias innovadoras para la excelencia educativa</p>
+        
+        <!-- Objetivos y Metodología -->
+        <div class="secciones">
+            <div class="seccion">
+                <h2>OBJETIVOS ESTRATÉGICOS</h2>
+                <h3>Objetivo General</h3>
+                <p>Implementar un sistema de acompañamiento académico entre pares que mejore los indicadores de rendimiento en las áreas de mayor dificultad.</p>
+                
+                <h3>Objetivos Específicos</h3>
+                <ul>
+                    <li>Desarrollar estrategias cognitivas personalizadas para estudiantes con dificultades</li>
+                    <li>Fortalecer la autopercepción académica y seguridad personal</li>
+                    <li>Capacitar a docentes en metodologías diferenciadas de enseñanza</li>
+                    <li>Establecer un sistema de seguimiento y evaluación de impacto</li>
+                </ul>
+            </div>
+            
+            <div class="seccion">
+                <h2>METODOLOGÍA IMPLEMENTADA</h2>
+                <h3>Fase 1: Diagnóstico</h3>
+                <ul>
+                    <li>Evaluación inicial de competencias</li>
+                    <li>Identificación de áreas críticas</li>
+                    <li>Selección de estudiantes monitoras</li>
+                </ul>
+                
+                <h3>Fase 2: Intervención</h3>
+                <ul>
+                    <li>Tutorías semanales personalizadas</li>
+                    <li>Talleres de técnicas de estudio</li>
+                    <li>Sesiones de refuerzo grupal</li>
+                </ul>
+                
+                <h3>Fase 3: Evaluación</h3>
+                <ul>
+                    <li>Análisis comparativo de rendimiento</li>
+                    <li>Encuestas de satisfacción</li>
+                    <li>Elaboración de informes finales</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nuevo pie de página -->
+    <footer class="pie-pagina">
+        <div class="contenedor-pie">
+            <!-- Redes sociales a la izquierda -->
+            <div class="redes-sociales">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/centroformativodeantioquia/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@CentroFormativodeAntioquiaCEFA" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <!-- Información del colegio en el centro -->
+            <div class="info-colegio">
+                <h2>COLEGIO EDUCATIVA CENTRO FORMACIÓN DE ANTIOQUIA</h2>
+                <p>Calle 2006-4100, Antioquia, Colombia</p>
+                <p>Teléfono: 300000 - 500000</p>
+                <p>Email: contacto@colegioeducativa.edu.co</p>
+            </div>
+            
+            <!-- Creadoras a la derecha -->
+            <div class="creadoras">
+                <h3>Proyecto creado por:</h3>
+                <p>Danha Hurtado</p>
+                <p>Salome Tamayo</p>
+                <p>Amelia Alvarez</p>
+                <p>Ximena Pulgarin</p>
+            </div>
+        </div>
+        
+        <!-- Logo en el pie de página -->
+        <div class="logo-pie">
+            <img src="../Imagenes/cefa def.png" alt="Logo CEFA">
+        </div>
+    </footer>
+</body>
+</html>

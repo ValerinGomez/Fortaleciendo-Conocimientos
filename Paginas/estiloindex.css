@@ -1,0 +1,324 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:15px;
+    width: 13rem;
+    height: 25rem;
+
+}
+ .contenedorexterno{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-evenly;
+   
+} 
+.button{
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+.todos{
+    margin: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr 2fr);
+    gap:30px;
+    max-width: 80%;
+    background-color: linear-gradient(to right, rgb(106, 179, 65), rgb(62, 151, 50));
+}
+
+
+.cuadritos{
+    display:flex;
+   background-color: linear-gradient(to right, rgba(255,0,0,0), rgb(109, 101, 101));
+}
+
+
+.contenedor6 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+    
+
+.contenedor7 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor8 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor9 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor10 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor11 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor12 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor13 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor14 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor15 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor16 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor17 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor18 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor19 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor20 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+.contenedor21 .card {background-image: linear-gradient(to right, #cb4335, #cb4335);}
+
+
+.body {
+    background-image: linear-gradient(to right, #bcd857, #6ca834);
+}
+
+
+
+.card-title {
+    color: #ffffff !important;  
+    font-family: 'Josefin Sans', sans-serif; 
+}
+
+.card-text {
+    color: #ffffff; 
+}
+
+.card .card-body .btn-primary {
+background-color: #FF8A65;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+body {
+    background-color: #faf3a6;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-title {
+    text-align: center;
+    color: #cb4335;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.subject-card {
+    background: linear-gradient(to right, #cb4335, #e74c3c);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
+
+.guide-btn {
+    background-color: #FF8A65;
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.guide-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+body {
+    background-color: #faf3a6;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-title {
+    text-align: center;
+    color: #cb4335;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.subject-card {
+    background: linear-gradient(to right, #cb4335, #e74c3c);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
+
+.guide-btn {
+    background-color: #FF8A65;
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.guide-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+Copy
+body {
+    background-color: #faf3a6;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-title {
+    text-align: center;
+    color: #cb4335;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.subject-card {
+    background: linear-gradient(to right, #cb4335, #e74c3c);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
+
+.guide-btn {
+    background-color: #FF8A65;
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.guide-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+

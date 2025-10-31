@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Usuarios</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      color: #2e7d32;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+      padding: 25px;
+      border: 1px solid #c8e6c9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1b5e20;
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e8f5e9;
+    }
+
+    th {
+      background: linear-gradient(to bottom, #4caf50, #388e3c);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+
+    tr:hover {
+      background-color: #f1f8e9;
+      transition: background-color 0.3s;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-submit {
+      background: linear-gradient(to bottom, #66bb6a, #4caf50);
+      color: white;
+    }
+
+    .btn-cancel {
+      background: linear-gradient(to bottom, #ef5350, #e53935);
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-container {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    #searchInput {
+      padding: 12px 16px;
+      width: 300px;
+      border: 1px solid #a5d6a7;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: #f9fdf9;
+      transition: all 0.3s;
+      color: #2e7d32;
+    }
+
+    #searchInput:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    #searchInput::placeholder {
+      color: #81c784;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid #c8e6c9;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      color: #1b5e20;
+      border-bottom: 2px solid #e8f5e9;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #a5d6a7;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: #f9fdf9;
+      transition: all 0.3s;
+      color: #2e7d32;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 25px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gestión de Usuarios</h1>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar usuario...">
+    </div>
+
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal para editar -->
+  <div class="modal" id="userModal">
+    <div class="modal-content">
+      <h2 id="modalTitle"><i class="fas fa-user-edit"></i> Editar Usuario</h2>
+      <form id="editForm">
+        <div class="form-group">
+          <label for="editName">Nombre:</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="form-group">
+          <label for="editRole">Rol:</label>
+          <select id="editRole" required>
+            <option value="admin">Administrador</option>
+            <option value="docente">Docente</option>
+            <option value="estudiante">Estudiante</option>
+          </select>
+        </div>
+        <div class="form-buttons">
+          <button type="button" class="btn btn-cancel" id="cancelBtn">Cancelar</button>
+          <button type="submit" class="btn btn-submit">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const apiUrl = "http://localhost:3000/admin"; 
+    let usuarios = [];
+    let usuarioSeleccionado = null;
+
+    async function cargarUsuarios() {
+      try {
+        const res = await fetch(apiUrl);
+        usuarios = await res.json();
+        renderTable(usuarios);
+      } catch (error) {
+        console.error("❌ Error al cargar usuarios:", error);
+      }
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "";
+
+      data.forEach(u => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${u.id}</td>
+          <td>${u.name}</td>
+          <td>${u.user_role}</td>
+          <td>
+            <button class="btn btn-submit" onclick="abrirModal(${u.id})">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button class="btn btn-cancel" onclick="eliminarUsuario(${u.id})">
+              <i class="fas fa-trash"></i> Eliminar
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filtrados = usuarios.filter(u =>
+        u.name.toLowerCase().includes(searchTerm) ||
+        u.user_role.toLowerCase().includes(searchTerm)
+      );
+      renderTable(filtrados);
+    });
+
+    function abrirModal(id) {
+      usuarioSeleccionado = usuarios.find(u => u.id === id);
+      document.getElementById("editName").value = usuarioSeleccionado.name;
+      document.getElementById("editRole").value = usuarioSeleccionado.user_role;
+      document.getElementById("userModal").style.display = "flex";
+    }
+
+    document.getElementById("cancelBtn").addEventListener("click", () => {
+      document.getElementById("userModal").style.display = "none";
+    });
+
+    document.getElementById("editForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById("editName").value.trim();
+      const rol = document.getElementById("editRole").value;
+
+      const res = await fetch(`${apiUrl}/${usuarioSeleccionado.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nombre, user_role: rol })
+      });
+
+      if (res.ok) {
+        alert("✅ Usuario actualizado correctamente");
+        document.getElementById("userModal").style.display = "none";
+        cargarUsuarios();
+      } else {
+        alert("❌ Error al actualizar usuario");
+      }
+    });
+
+    async function eliminarUsuario(id) {
+      if (confirm("¿Seguro que quieres eliminar este usuario?")) {
+        const res = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
+        if (res.ok) {
+          alert("🗑️ Usuario eliminado");
+          cargarUsuarios();
+        } else {
+          alert("❌ Error al eliminar");
+        }
+      }
+    }
+
+    window.onload = cargarUsuarios;
+  </script>
+</body>
+</html>

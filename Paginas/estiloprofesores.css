@@ -1,0 +1,98 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:15px;
+    width: 13rem;
+    height: 25rem;
+ 
+ }
+  .contenedorexterno{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+     justify-content: space-evenly;
+    
+ } 
+
+ .logo-container img {
+   width: 200px;
+   height: 200px;
+   object-fit: contain;
+   border-radius: 25%;
+   border: 5px solid #ACCF8B;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);}
+
+ .button{
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    font-family: "Josefin Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+ }
+ .todos{
+    margin: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr 2fr);
+    gap:30px;
+    max-width: 80%;
+ 
+ }
+ 
+ 
+ 
+ .cuadritos{
+   display:flex;
+  background-color: linear-gradient(to right, rgba(255,0,0,0), rgb(109, 101, 101));
+}
+ 
+ .contenedor6 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+    
+
+.contenedor7 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+
+.contenedor8 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+
+.contenedor9 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+
+.contenedor10 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+
+.contenedor11 .card {background-image: linear-gradient(to right, #5C7545, #5C7545);}
+
+ 
+.body {
+   background-image: linear-gradient(to right, #bcd857, #6ca834);
+}
+
+
+
+.card-title {
+   color: #ffffff !important;  
+   font-family: 'Josefin Sans', sans-serif; 
+}
+
+.card-text {
+   color: #ffffff; 
+}
+
+.card .card-body .btn-primary {
+background-color: #ACCF8B;
+   color: rgb(255, 255, 255);
+   border: none;
+}
+ 
+ 
+.logo {
+   width: 315px;
+   height: 300px;
+   object-fit: contain;
+   border-radius: 25%;
+   border: 5px solid #567836; /* Margen verde inicial */
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+   padding: 5px; /* Espacio entre el margen y la imagen */
+   background-color: white;
+}
+ 
+ 

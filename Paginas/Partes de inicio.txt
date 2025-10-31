@@ -1,0 +1,37 @@
+.titulo {
+    position: relative;
+    font-size: 2em;
+    margin-block-start: 8em;
+    margin-block-end: 1em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    color: blanchedalmond;
+    width:"30px";
+
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imagen{
+    align-content: center;
+    background-position:center;
+    position: absolute;
+    width: 2000px;
+}
+
+<div class="imagen">
+      <img src="../Imagenes/carbonero.png" class="img-fluid">
+     
+    </div>
+
+<div class="titulo" width:"30px">
+          <h1><i>Fortaleciendo Conocimientos</i></h1>
+         
+        </div>
+
+         <button type="submit" class="btn btn-personalizado">Ingresar</button>

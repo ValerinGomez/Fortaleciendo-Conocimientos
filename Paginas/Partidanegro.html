@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD> 
+    <title>Partida</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Menú negro */
+        .menu-superior {
+            background-color: #000000; /* Color negro */
+            padding: 15px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            height: 60px;
+            z-index: 1000;
+        }
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+        }
+        
+        .grupo-izquierdo, .grupo-derecho {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+        
+        .logo-nav {
+            height: 50px;
+            margin: 0 20px;
+        }
+        
+        .logo-nav img {
+            height: 100%;
+            width: auto;
+            max-width: 120px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+        
+        /* Texto blanco para el menú negro */
+        .menu-superior h1, 
+        .menu-superior a {
+            color: white; /* Texto blanco */
+            text-shadow: none;
+        }
+        
+        .menu-superior h1 {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .menu-superior a {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        
+        /* Efecto hover gris claro */
+        .menu-superior a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Resto del código permanece igual */
+        .contenido-principal {
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .titulo-pagina {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+        
+        .contenedor-textos {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .texto-izquierdo, .texto-derecho {
+            width: 45%;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            max-height: 40vh;
+            overflow: auto;
+        }
+        
+        .texto-izquierdo h2, .texto-derecho h2 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .texto-izquierdo p, .texto-derecho p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .subtitulo-final {
+            font-style: italic;
+            font-weight: bold;
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            margin: 5px 0 20px;
+            padding: 5px 15px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        
+        .titulo-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</HEAD>
+<BODY>
+  <!-- Menú negro -->
+  <nav class="menu-superior">
+    <div class="contenedor-menu">
+      <div class="grupo-izquierdo">
+        <h1>INICIO</h1>
+        <div style="width: 82px;"></div>
+      </div>
+      
+      <div class="logo-nav">
+        <img src="../Imagenes/cefa def.png" alt="Logo">
+      </div>
+      
+      <div class="grupo-derecho">
+        <div style="width: 60px;"></div>
+        <a href="Ingreso.html">REGISTRARSE <i class="fas fa-user" style="color: white;"></i></a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Contenido principal -->
+  <div class="contenido-principal">
+    <div class="titulo-container">
+      <h1 class="titulo-pagina">Fortaleciendo Conocimientos</h1>
+      <p class="subtitulo-final">Hacia el alto nivel de la excelencia</p>
+    </div>
+    
+    <div class="contenedor-textos">
+      <div class="texto-izquierdo">
+        <h2>Título Izquierdo</h2>
+        <p>Aquí puedes colocar el texto que desees en el lado izquierdo. Este espacio está diseñado para información adicional, descripciones o cualquier contenido relevante que quieras mostrar.</p>
+      </div>
+      
+      <div class="texto-derecho">
+        <h2>Título Derecho</h2>
+        <p>Este es el espacio para el texto del lado derecho. Puedes usarlo para complementar la información del lado izquierdo o para mostrar contenido independiente pero relacionado con el propósito de tu página.</p>
+      </div>
+    </div>
+  </div>
+</BODY>
+</HTML>
