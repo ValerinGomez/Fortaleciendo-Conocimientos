@@ -1,204 +1,330 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Docente</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #cbf4c1; /* Color de fondo verde claro */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            position: relative;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Docente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #cbf4c1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
 
-         body::before {
-            content: "";
-            background-image: url('../Imagenes/instc\ 2025-07-10\ 165512.882.jpeg'); 
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            position: fixed; 
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            
-        }
+    body::before {
+      content: "";
+      background-image: url('../Imagenes/instc 2025-07-10 165512.882.jpeg'); 
+      background-size: cover; 
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      position: fixed; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
 
-       
-        .top-right-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-        }
-        
-        .small-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ACCF8B;
-            display: block; 
-            margin: 0 auto;
-        }
-        
-        .logout-btn {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        
-        .logout-btn:hover {
-            background-color: #d32f2f;
-        }
-        
-        .logo-container {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .logo-frame {
-            background-color: #ACCF8B;
-            border-radius: 60px;
-            padding: 20px;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .logo-img-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .logo-img {
-            max-width: 300px;
-            max-height: 200px;
-            height: auto;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        .control-group {
-            text-align: center;
-            flex: 1;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        select {
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            width: 100%;
-            font-size: 16px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            appearance: none;
-            text-align: center;
-        }
-    </style>
+    .top-right-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .logout-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover { background-color: #d32f2f; }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-frame {
+      background-color: #ACCF8B;
+      border-radius: 60px;
+      padding: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .logo-img-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 30px;
+    }
+
+    .logo-img { max-width: 300px; }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .control-group { flex: 1; text-align: center; }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    select {
+      padding: 12px 20px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      width: 100%;
+      font-size: 16px;
+      background-color: white;
+      text-align: center;
+    }
+
+    /* Cuadro dinámico */
+    #resultado {
+      margin-top: 30px;
+      background: rgba(0,128,0,0.2);
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      display: none;
+    }
+
+    #resultado table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #resultado th, #resultado td {
+      padding: 10px;
+      border: 1px solid #4CAF50;
+      text-align: center;
+    }
+
+    #resultado th {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .botones {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .botones button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .subir { background-color: #28a745; }
+    .borrar { background-color: #f44336; }
+  </style>
 </head>
 <body>
-    <!-- Script de verificación de sesión (agregado al inicio) -->
-    <script>
-        // Verificar si el usuario ha iniciado sesión
-        if (!sessionStorage.getItem('usuarioAutenticado')) {
-            alert('Debes iniciar sesión para acceder');
-            window.location.href = 'Index.html';
-        }
-    </script>
+  <!-- Contenedor superior derecho -->
+  <div class="top-right-container">   
+    <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
 
-    <!-- Contenedor superior derecho -->
-    <div class="top-right-container">   
-        <img src="../Imagenes/carbonero.png" alt="Usuario" class="small-img">
-        <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
+  <!-- Logo -->
+  <div class="logo-container">
+    <div class="logo-frame">
+      <div class="logo-img-container">
+        <img src="../Imagenes/fc-removebg-preview.png" alt="Logo" class="logo-img">
+      </div>
     </div>
-
-    <!-- Logo principal -->
-    <div class="logo-container">
-        <div class="logo-frame">
-            <div class="logo-img-container">
-                <img src="../Imagenes/fc-removebg-preview.png" alt="Logo" class="logo-img">
-            </div>
-        </div>
+  </div>
+  
+  <!-- Controles -->
+  <div class="controls">
+    <div class="control-group">
+      <label for="grado">GRADO</label>
+      <select id="grado">
+        <option value="0">SELECCIONAR</option>
+        <option value="Grado 6">GRADO 6°</option>
+        <option value="Grado 7">GRADO 7°</option>
+        <option value="Grado 8">GRADO 8°</option>
+        <option value="Grado 9">GRADO 9°</option>
+        <option value="Grado 10">GRADO 10°</option>
+        <option value="Grado 11">GRADO 11°</option>
+      </select>
     </div>
     
-    <!-- Controles de grado y semestre -->
-    <div class="controls">
-        <div class="control-group">
-            <label for="grado">GRADO</label>
-            <select id="grado">
-                <option value="0">SELECCIONAR</option>
-                <option value="informatica">11°INFORMATICA1</option>
-                <option value="quimicas">11°CIENCIAS QUIMICAS 2</option>
-                <option value="artes">11°ARTES ESCENICAS</option>
-                <option value="matematicas">11°MATEMATICAS</option>
-                <option value="ingles">11°INGLES</option>
-                <option value="diseno">11°DISEÑO Y PATRONAJE</option>
-            </select>
-        </div>
-        
-        <div class="control-group">
-            <label for="semestre">SEMESTRE</label>
-            <select id="semestre">
-                <option value="0">SELECCIONAR</option>
-                <option value="1">SEMESTRE 1</option>
-                <option value="2">SEMESTRE 2</option>
-            </select>
-        </div>
+    <div class="control-group">
+      <label for="semestre">SEMESTRE</label>
+      <select id="semestre">
+        <option value="0">SELECCIONAR</option>
+        <option value="1">SEMESTRE 1</option>
+        <option value="2">SEMESTRE 2</option>
+      </select>
     </div>
 
-    <!-- Scripts (modificados) -->
-    <script>
-        // Función para cerrar sesión
-        function cerrarSesion() { 
-            sessionStorage.removeItem('usuarioAutenticado');
-            sessionStorage.removeItem('tipoUsuario');
-            window.location.href = "Index.html"; 
-        }
+    <div class="control-group">
+      <label for="materia">MATERIAS</label>
+      <select id="materia">
+        <option value="0">SELECCIONAR</option>
+     <option value="quimica">QUÍMICA</option>
+        <option value="biologia">BIOLOGÍA</option>
+        <option value="fisica">FÍSICA</option>
+        <option value="calculo">CALCULO</option>
+        <option value="ingles">INGLES</option>
+        <option value="filosofia">FILOSOFIA</option>
+        <option value="estadistica">ESTADISTICA</option>
+        <option value="ciencias sociales">CIENCIAS SOCIALES</option>
+        <option value="informatica">INFORMATICA</option>
+        <option value="educacion religiosa">EDUCACION RELIGIOSA</option>
+        <option value="educacion artistica">EDUCACION ARTISTICA</option>
+        <option value="educacion fisica">EDUCACION FISICA</option>
+        <option value="economia y politica">ECONOMIA Y POLITICA</option>
+        <option value="etica y valores">ETICA Y VALORES</option>
+        <option value="lengua castellana">LENGUA CASTELLANA</option>
+        <option value="aritmetica">ARITMETICA</option>
+        <option value="algebra">ALGEBRA</option>
+        <option value="trigonometria">TRIGONOMETRIA</option>
+        <option value="geometria">GEOMETRIA</option>
+        <option value="competencia lectora">COMPETENCIA LECTORA</option>
+      </select>
+    </div>
+  </div>
 
-        // Verificación de permisos
-        if (sessionStorage.getItem("tipoUsuario") !== "admin") {
-            window.alert('No tienes acceso');
-            window.location.href = 'Index.html';
-        }
+  <!-- Cuadro dinámico -->
+  <div id="resultado">
+    <h2>📂 Guías disponibles</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Grado</th>
+          <th>Semestre</th>
+          <th>Materia</th>
+          
+         
+        </tr>
+      </thead>
+      <tbody id="tablaGuias"></tbody>
+    </table>
 
-        
-    </script>
+    <!-- Subir guía -->
+    <form id="form-subir" enctype="multipart/form-data">
+      <h3>⬆️ Subir Guía</h3>
+      <input type="file" id="archivo" name="archivo" required>
+      <button type="submit" class="subir">Subir</button>
+    </form>
+  </div>
+
+ <script>
+  const grado = document.getElementById("grado");
+  const semestre = document.getElementById("semestre");
+  const materia = document.getElementById("materia");
+  const tabla = document.getElementById("tablaGuias");
+  const resultado = document.getElementById("resultado");
+  const formSubir = document.getElementById("form-subir");
+  const fileInput = formSubir.querySelector('input[type="file"]');
+
+  // Función para cargar guías
+  async function mostrarGuias() {
+    const g = grado.value;
+    const s = semestre.value;
+    const m = materia.value;
+
+    if (g === "0" || s === "0" || m === "0") {
+      resultado.style.display = "none";
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/guias?grado=${g}&semestre=${s}&materia=${m}`);
+      const guias = await res.json();
+
+      // Mostrar tabla aunque esté vacía
+      resultado.style.display = "block";
+      tabla.innerHTML = "";
+
+      if (guias.length === 0) {
+        tabla.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center;">No hay guías disponibles para esta materia.</td>
+          </tr>`;
+        return;
+      }
+
+      guias.forEach(g => {
+        tabla.innerHTML += `
+          <tr>
+            <td>${g.id}</td>
+            <td>${g.grado}</td>
+            <td>${g.semestre}</td>
+            <td>${g.materias || g.materia}</td>
+            <td>
+              <a href="http://localhost:3000${g.url_archivo}" target="_blank">📄 Ver</a>
+            </td>
+          </tr>`;
+      });
+    } catch (err) {
+      console.error("❌ Error al mostrar guías:", err);
+    }
+  }
+
+  // Escuchar cambios en los selectores
+  grado.addEventListener("change", mostrarGuias);
+  semestre.addEventListener("change", mostrarGuias);
+  materia.addEventListener("change", mostrarGuias);
+
+  // Subir guía
+  formSubir.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("grado", grado.value);
+    formData.append("semestre", semestre.value);
+    formData.append("materias", materia.value);
+    formData.append("archivo", fileInput.files[0]); // 👈 IMPORTANTE, debe ser 'archivo'
+
+    try {
+      const res = await fetch("http://localhost:3000/guias", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      console.log("✅ Subida:", data);
+
+      mostrarGuias(); // refresca la tabla automáticamente
+      formSubir.reset();
+    } catch (err) {
+      console.error("❌ Error al subir:", err);
+    }
+  });
+</script>
 </body>
 </html>
+
+
+

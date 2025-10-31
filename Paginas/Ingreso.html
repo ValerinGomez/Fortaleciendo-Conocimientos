@@ -90,7 +90,7 @@
             margin-top: 5px;
         }
 
-        /* Mensaje de error para admin */
+        /* adminError de error para admin */
         .admin-error {
             color: #dc3545;
             font-size: 14px;
@@ -113,13 +113,13 @@
                 <form id="loginForm">
                     <div class="mb-3">
                         <label for="usuario" class="form-label"></label>
-                        <input type="text" class="form-control" id="usuario" required minlength="10">
+                        <input type="text" class="form-control" id="usuario" required>
                         <div class="texto-ayuda">Ingresar minimo 10 caracteres</div>
                         <div class="invalid-feedback" id="usuarioError"></div>
                     </div>
                     <div class="mb-3">
                         <label for="contrasena" class="form-label"></label>
-                        <input type="password" class="form-control" id="contrasena" required minlength="5">
+                        <input type="password" class="form-control" id="contrasena" required >
                         <div class="texto-ayuda">Ingresar minimo 5 caracteres</div>
                         <div class="invalid-feedback" id="contrasenaError"></div>
                     </div>
@@ -142,73 +142,65 @@
             let isValid = true;
 
             // Validación de usuario
-            if (usuario.length < 10) {
-                document.getElementById('usuario').classList.add('is-invalid');
-                document.getElementById('usuarioError').textContent = 'El usuario debe tener al menos 10 caracteres';
-                isValid = false;
-            } else {
-                document.getElementById('usuario').classList.remove('is-invalid');
-                document.getElementById('usuarioError').textContent = '';
-            }
-
+            // if (usuario.length < 10) {
+            //     document.getElementById('usuario').classList.add('is-invalid');
+            //     document.getElementById('usuarioError').textContent = 'El usuario debe tener al menos 10 caracteres';
+            //     isValid = false;
+            // } else {
+            //     document.getElementById('usuario').classList.remove('is-invalid');
+            //     document.getElementById('usuarioError').textContent = '';
+            // }
+  
             // Validación de contraseña
-            if (contrasena.length < 5) {
-                document.getElementById('contrasena').classList.add('is-invalid');
-                document.getElementById('contrasenaError').textContent = 'La contraseña debe tener al menos 5 caracteres';
-                isValid = false;
-            } else {
-                document.getElementById('contrasena').classList.remove('is-invalid');
-                document.getElementById('contrasenaError').textContent = '';
-            }
+            // if (contrasena.length < 5) {
+            //     document.getElementById('contrasena').classList.add('is-invalid');
+            //     document.getElementById('contrasenaError').textContent = 'La contraseña debe tener al menos 5 caracteres';
+            //     isValid = false;
+            // } else {
+            //     document.getElementById('contrasena').classList.remove('is-invalid');
+            //     document.getElementById('contrasenaError').textContent = '';
+            // }
 
             // Si es válido, verificar si es admin
             if (isValid) {
-                // Credenciales de administrador (en producción esto vendría de una API)
+      try {
+        const res = await fetch("http://localhost:3000/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ usuario, contrasena })
+        });
 
+        const data = await res.json();
+        console.log(data);
+        adminError.innerText = data.message;
 
-                // document.getElementById("loginForm").addEventListener("submit", async (e) => {
-                //     e.preventDefault();
+        if (data.success) {
+          adminError.style.color = "green";
 
-                   
+          const role = data.user.role; // <- esta es la propiedad correcta
+          sessionStorage.setItem("tipoUsuario", role);
 
+          if (role === "administrador") {
+            window.location.href = "Administracion.html";
+          } else if (role === "estudiante") {
+            window.location.href = "Estudiantes.html";
+          } else if (role === "docente") {
+            window.location.href = "DocenteIngreso.html";
+          } else {
+            adminError.innerText = "Rol desconocido.";
+            adminError.style.color = "red";
+          }
 
-                    try {
-                        const res = await fetch("http://localhost:3000/auth/login", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ username: usuario, password: contrasena })
-                        });
-
-                        const data = await res.json();
-                        console.log(data);
-                        console.usuario;
-
-                        if (data.success) {
-                            // Aquí validamos si coincide con las credenciales de admin
-                            if (usuario === adminCredentials.usuario && contrasena === adminCredentials.contrasena) {
-                                sessionStorage.setItem('usuarioAutenticado', usuario);
-                                sessionStorage.setItem('tipoUsuario', 'admin');
-                                window.location.href = "DocenteIngreso.html";
-                            } else {
-                                sessionStorage.setItem("usuarioAutenticado", usuario);
-                                sessionStorage.setItem("tipoUsuario", "usuario");
-                                window.location.href = "comienzo.html";
-                            }
-
-                        } else {
-                        }
-                    } catch (error) {
-                        console.log(error);
-                        
-                    }
-                
-
-            }
+        } else {
+          adminError.style.color = "red";
         }
-        );
-
-
-    </script>
+      } catch (error) {
+        adminError.innerText = "Error de conexión con el servidor.";
+        adminError.style.color = "red";
+      }
+    }
+  });
+</script>
 </body>
 
 </html>
