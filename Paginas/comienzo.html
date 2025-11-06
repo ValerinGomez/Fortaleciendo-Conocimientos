@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Comienzo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .menu-superior {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 60px;
+        }
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+        }
+        
+        .grupo-izquierdo, .grupo-derecho {
+            display: flex;
+            align-items: center;
+            gap: 210px;
+        }
+        
+        .logo-nav {
+            height: 50px;
+            margin: 0 20px;
+        }
+        
+        .logo-nav img {
+            height: 100%;
+            width: auto;
+            max-width: 120px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+        
+        .menu-superior h1 {
+            color: #333;
+            text-shadow: none;
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        
+        .destacado {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: white !important;
+            background-color: #ACCF8B;
+            border: 2px solid #ACCF8B;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        
+        .destacado:hover {
+            background-color: #ACCF8B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .contenido-principal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .titulo {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .subtitulo {
+            font-style: italic;
+            font-weight: bold;
+            color: white;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Área de usuario */
+        .usuario-info {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #333;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+        }
+
+        /* Mensaje de error */
+        .error-message {
+            color: white;
+            background-color: rgba(220, 53, 69, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   
+
+  <!-- Menú superior -->
+  <nav class="menu-superior">
+    <div class="contenedor-menu">
+      <div class="grupo-izquierdo">
+        
+        <a href="Estudiantes.html" class="destacado">AREA PERSONAL</a>
+      </div>
+      
+      <div class="logo-nav">
+        <img src="../Imagenes/cefa def.png" alt="Logo">
+      </div>
+    </div>
+
+    <!-- Área de usuario -->
+    <div class="usuario-info" id="usuarioInfo">
+        <span id="nombreUsuario"></span>
+        <button class="btn-logout" id="btnLogout">
+            <i class="fas fa-sign-out-alt"></i> Salir
+        </button>
+    </div>
+  </nav>
+  
+  <div class="contenido-principal">
+    <h1 class="titulo">Fortaleciendo Conocimientos</h1>
+    <p class="subtitulo">Hacia el alto nivel de la excelencia</p>
+    <div class="error-message" id="errorMessage"></div>
+  </div>
+
+  <script>
+    // Verificar sesión al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        const usuario = sessionStorage.getItem("usuarioAutenticado");
+        const errorMessage = document.getElementById("errorMessage");
+        
+       document.getElementById("btnLogout").addEventListener("click", function() {
+            sessionStorage.removeItem("usuarioAutenticado");
+            window.location.href = "Index.html";
+        });
+
+     
+    });
+
+    // Depuración: Mostrar contenido de sessionStorage en consola
+    console.log("Contenido de sessionStorage:", sessionStorage);
+    console.log("Usuario autenticado:", sessionStorage.getItem("usuarioAutenticado"));
+  </script>
+</body>
+</html>

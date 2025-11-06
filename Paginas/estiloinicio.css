@@ -1,0 +1,38 @@
+/*.titulo {
+    position: relative;
+    font-size: 2em;
+    margin-block-start: 8em;
+    margin-block-end: 1em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    color: blanchedalmond;
+    width:"30px";
+
+}*/
+
+.contenedor-titulo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+.titulo {
+    color: #faf3a6;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../Imagenes/carbonero.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+

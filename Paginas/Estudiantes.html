@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías Académicas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #DFEED1;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .left-panel {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        
+        
+        .logo-container img {
+            width: 305px;
+            height: 295px;
+            object-fit: contain;
+            border-radius: 25%;
+            border: 5px solid #567836; /* Margen verde inicial */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 5px; /* Espacio entre el margen y la imagen */
+            background-color: white;
+        }
+        
+        .docentes-btn {
+            width: 200px;
+            height: 50px;
+            background-color: #5C7545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .docentes-btn:hover {
+            background-color: #5C7545;
+        }
+        
+        .right-panel {
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            align-content: start;
+        }
+        
+        .materia {
+            background-color: #5C7545;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .materia:hover {
+            transform: scale(1.03);
+        }
+        
+        .materia h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .materia p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+        }
+        
+        .btn-guia {
+            background-color: #ACCF8B;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-top: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-guia:hover {
+            background-color: #375619;
+        }
+        
+        /* Eliminar barra de desplazamiento */
+        .right-panel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .right-panel {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+            .left-panel, .right-panel {
+                width: 100%;
+            }
+            .right-panel {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .right-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Panel izquierdo con imagen y botón -->
+    <div class="left-panel">
+        <div class="logo-container">
+            <img src="../Imagenes/fc-removebg-preview.png"  alt="Logo académico">
+        </div>
+        <button class="docentes-btn">Estudiantes</button>
+    </div>
+    
+    <!-- Panel derecho con cuadros de materias -->
+    <div class="right-panel">
+        <div class="materia">
+            <h2>CÁLCULO</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>INGLÉS</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>FÍSICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>FILOSOFÍA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>ESTADÍSTICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>BIOLOGÍA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>CIENCIAS SOCIALES</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>INFORMÁTICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>EDUCACIÓN RELIGIOSA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>EDUCACIÓN ARTÍSTICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>EDUCACIÓN FÍSICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>QUÍMICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>ECONOMÍA Y POLÍTICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>ÉTICA Y VALORES</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>LENGUA CASTELLANA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>ARITMETICA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>ALGEBRA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>TRIGONOMETRIA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>GEOMETRIA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+        <div class="materia">
+            <h2>COMPETENCIA LECTORA</h2>
+            <p>Guías de refuerzo y mejora</p>
+            <a href="Alumno.html" class="btn-guia">Guías</a>
+        </div>
+    </div>
+</body>
+</html>
+              
+      
+     
+       
