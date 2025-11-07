@@ -164,7 +164,7 @@
             // Si es válido, verificar si es admin
             if (isValid) {
       try {
-        const res = await fetch("http://localhost:3000/auth/login", {
+        const res = await fetch("https://fortaleciendo-conocimientos.onrender.com/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ usuario, contrasena })
