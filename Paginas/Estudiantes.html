@@ -253,7 +253,7 @@
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/guias_estudiantes?grado=${grado}&semestre=${semestre}&materia=${materia}`);
+      const res = await fetch(`https://fortaleciendo-conocimientos.onrender.com/guias_estudiantes?grado=${grado}&semestre=${semestre}&materia=${materia}`);
       const guias = await res.json();
 
       resultadoDiv.style.display = "block";
@@ -273,7 +273,7 @@
           <td>${g.grado}</td>
           <td>${g.semestre}</td>
           <td>${g.materia}</td>
-          <td><a href="http://localhost:3000${g.url_archivo}" target="_blank">Ver guía</a></td>
+          <td><a href="https://fortaleciendo-conocimientos.onrender.com${g.url_archivo}" target="_blank">Ver guía</a></td>
         `;
         tablaGuias.appendChild(fila);
       });

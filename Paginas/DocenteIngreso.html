@@ -261,7 +261,7 @@
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/guias?grado=${g}&semestre=${s}&materia=${m}`);
+      const res = await fetch(`https://fortaleciendo-conocimientos.onrender.com/guias?grado=${g}&semestre=${s}&materia=${m}`);
       const guias = await res.json();
 
       // Mostrar tabla aunque esté vacía
@@ -284,7 +284,7 @@
             <td>${g.semestre}</td>
             <td>${g.materias || g.materia}</td>
             <td>
-              <a href="http://localhost:3000${g.url_archivo}" target="_blank">📄 Ver</a>
+              <a href="https://fortaleciendo-conocimientos.onrender.com${g.url_archivo}" target="_blank">📄 Ver</a>
             </td>
           </tr>`;
       });
@@ -308,7 +308,7 @@
     formData.append("archivo", fileInput.files[0]); // 👈 IMPORTANTE, debe ser 'archivo'
 
     try {
-      const res = await fetch("http://localhost:3000/guias", {
+      const res = await fetch("https://fortaleciendo-conocimientos.onrender.com/guias", {
         method: "POST",
         body: formData
       });
