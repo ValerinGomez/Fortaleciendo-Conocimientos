@@ -150,9 +150,7 @@
 </head>
 <body>
   <!-- Contenedor superior derecho -->
-  <div class="top-right-container">   
-    <button class="logout-btn" onclick="cerrarSesion()">Cerrar Sesión</button>
-  </div>
+  
 
   <!-- Logo -->
   <div class="logo-container">
@@ -273,7 +271,7 @@
           <td>${g.grado}</td>
           <td>${g.semestre}</td>
           <td>${g.materia}</td>
-          <td><a href="https://fortaleciendo-conocimientos.onrender.com${g.url_archivo}" target="_blank">Ver guía</a></td>
+          <td><a href="https://fortaleciendo-conocimientos.onrender.com/${g.url_archivo}" target="_blank">Ver guía</a></td>
         `;
         tablaGuias.appendChild(fila);
       });
