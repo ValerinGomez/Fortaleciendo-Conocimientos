@@ -83,11 +83,11 @@ const createData = async (req, res) => {
    
     try {
         // Hashear la contraseña (puedes cambiar '123' por la contraseña real)
-        const hashedPassword = await bcrypt.hash('784512', 10);
+        const hashedPassword = await bcrypt.hash('741852', 10);
         // Insertar datos en la tabla usuarios
         await pool.query(
             "INSERT INTO usuarios (name, password, user_role) VALUES ($1, $2, $3)",
-            ['Carlos Ruiz', hashedPassword, 'docente']
+            ['Sofia Nuñez', hashedPassword, 'docente']
         );
           console.log(await pool.query(
             "SELECT * FROM usuarios",
